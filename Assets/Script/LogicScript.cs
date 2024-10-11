@@ -13,8 +13,8 @@ public class LogicScript : MonoBehaviour
     [ContextMenu("Increase Score")]
     public void addScore(int scoreToAdd)
     {
-        if (!isGameOver) // Tambahkan pengecekan status game over
         {
+            AudioManager.singleton.PlaySound(2);
             playerScore = playerScore + scoreToAdd;
             scoreText.text = playerScore.ToString();
         }
@@ -23,11 +23,14 @@ public class LogicScript : MonoBehaviour
     public void restartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void gameOver()
     {
+        AudioManager.singleton.PlaySound(1);
         isGameOver = true; // Set status game over menjadi true
         gameOverScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 }

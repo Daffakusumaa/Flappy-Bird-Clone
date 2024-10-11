@@ -17,15 +17,14 @@ public class BirdScript : MonoBehaviour
 
     void Update()
     {
-        // Jika game over, hentikan update input
-        if (!logic.gameOverScreen.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                AudioManager.singleton.PlaySound(0);
                 myRigidbody.velocity = Vector2.up * flapStrength;
             }
 
-            if (transform.position.y > 18 || transform.position.y < -18)
+            if (transform.position.y > 25 || transform.position.y < -25)
             {
                 logic.gameOver();
             }
